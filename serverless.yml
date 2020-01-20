@@ -1,39 +1,31 @@
-service: serverless-basic-graphql
+service: trilamb
 
 provider:
   name: aws
-  runtime: nodejs8.10
-  stage: ${opt:stage, 'dev'}
-  region: ap-southeast-1
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'development'}
+  region: us-east-2
 
 functions:
   graphql:
     handler: src/handler.graphql
     events:
       - http:
-          path: /graphql
+          path: /
           method: post
           cors: true
       - http:
-          path: /graphql
-          method: get
-          cors: true
-          
-  defaultGraphql:
-    handler: src/handler.defaultGraphql
-    events:
-      - http:
-          path: /defaultGraphql
-          method: post
-          cors: true
-      - http:
-          path: /defaultGraphql
+          path: /
           method: get
           cors: true
 
 plugins:
   - serverless-offline
+  - serverless-apigw-binary
 
 custom:
   serverless-offline:
     port: 3000
+  apigwBinary:
+    types:
+      - 'multipart/form-data'
