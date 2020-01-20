@@ -24,6 +24,17 @@ npx serverless offline start
 
 A great client to use for testing multipart/form-data attachments via GraphQL Mutations is [Altair](https://sirmuel.design/working-with-file-uploads-using-altair-graphql-d2f86dc8261f)
 
+You can then supply this mutation and attach a file with a field name of `somefile` from Altair's file browser.
+
+```mutation($somefile: Upload){
+  singleUpload(file: $somefile) {
+    filename
+    mimetype
+    encoding
+  }
+}
+```
+
 **Deployment:**
 
 We can deploy the existing solution by using [Serverless](https://serverless.com) then run
