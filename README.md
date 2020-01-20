@@ -20,6 +20,9 @@ yarn start   # or npm run start
 npx serverless offline start
 ```
 
+**Client Testing**
+A great client to use for testing multipart/form-data attachments via GraphQL Mutations is [Altair](https://sirmuel.design/working-with-file-uploads-using-altair-graphql-d2f86dc8261f)
+
 **Deployment:**
 
 We can deploy the existing solution by using [Serverless](https://serverless.com) then run
@@ -27,7 +30,9 @@ We can deploy the existing solution by using [Serverless](https://serverless.com
 - `serverless config credentials --provider aws --key AWS_ACCESS_KEY_ID --secret AWS_SECRET_ACCESS_KEY`
 - `serverless deploy`
 
-_IMPORTANT_ If using serverless, this will automatically take care of adding a binary media type
+_IMPORTANT_
+
+If using serverless, this will automatically take care of adding a binary media type
 for `multipart/form-data` to API Gateway via the [`serverless-apigw-binary`](https://github.com/maciejtreder/serverless-apigw-binary) module.
 
 If you're deploying this manually or with some other deployment method (apex, etc), you need to do the following:
