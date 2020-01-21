@@ -26,7 +26,8 @@ A great client to use for testing multipart/form-data attachments via GraphQL Mu
 
 You can then supply this mutation and attach a file with a field name of `somefile` from Altair's file browser.
 
-```mutation($somefile: Upload){
+```
+mutation($somefile: Upload){
   singleUpload(file: $somefile) {
     filename
     mimetype
