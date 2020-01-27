@@ -5,11 +5,9 @@ const { uuid } = require('uuidv4')
 const path = require('path')
 
 // Define your already-created S3 Bucket name
-const Bucket = 'YourBucketNameHere'
+const Bucket = 'k00k-test'
 
 const typeDefs = gql`
-  scalar Upload
-
   type File {
     id: String
     filename: String
@@ -32,7 +30,6 @@ const resolvers = {
   },
   Mutation: {
     singleUpload: async (_, { file }) => {
-      console.log('here')
       await uploadFile(file)
       return file
     },
@@ -49,6 +46,7 @@ const resolvers = {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  uploads: { maxFiles: 100 },
   context: receivedContext => ({
     ...receivedContext
   })
